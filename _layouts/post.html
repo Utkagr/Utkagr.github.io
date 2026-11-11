@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="{{ site.default_theme }}" data-bg="off">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <main class="wrap post">
+    <p><a href="{{ '/' | relative_url }}">← {{ site.author }}</a></p>
+    <p class="byline dim">By {{ site.author }} · {{ page.date | date: '%b %-d, %Y' }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.summary %}<blockquote><p><strong>In short:</strong> {{ page.summary }}</p></blockquote>{% endif %}
+    {{ content }}
+    <hr />
+    <p class="dim">Written by {{ site.author }} · <a href="https://github.com/Utkagr">github</a> · <a href="https://x.com/agrawalutkarsh5">x</a></p>
+  </main>
+  <script src="{{ '/js/site.js' | relative_url }}"></script>
+</body>
+</html>

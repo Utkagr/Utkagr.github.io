@@ -1,0 +1,152 @@
+---
+title: "Utkarsh Agrawal · Data Scientist"
+---
+{%- assign h = site.data.home -%}
+<!DOCTYPE html>
+<html lang="en" data-theme="{{ site.default_theme }}" data-bg="{{ site.default_background }}">
+<head>
+  {% include head.html %}
+</head>
+<body>
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="#top" class="brand"><span class="dim">~/</span>{{ h.handle }}<span class="caret"></span></a>
+      <nav class="nav" aria-label="Sections">
+        <a href="#focus">focus</a>
+        <a href="#path">path</a>
+        <a href="#work">work</a>
+        {% if h.beyond.size > 0 %}<a href="#beyond">beyond</a>{% endif %}
+        {% if h.awards.size > 0 %}<a href="#awards">awards</a>{% endif %}
+        <a href="#contact">contact</a>
+      </nav>
+      <div class="tools">
+        <button class="tool" id="mode-toggle" type="button" title="Light / dark (d)" aria-label="Toggle light or dark">◐</button>
+        <button class="tool" id="theme-toggle" type="button" title="Cycle theme (t)" aria-label="Cycle theme">t</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap">
+    <section class="hero">
+      <p class="prompt"><span class="dim">$</span> whoami</p>
+      <h1>{{ site.author }}</h1>
+      <p class="tagline">{{ h.tagline }}</p>
+      <p class="bio">{{ h.bio }}</p>
+      <label class="cmd">
+        <span class="dim">/</span>
+        <input id="cmd" type="text" placeholder="filter work… or :theme terminal, :bg off, :help" autocomplete="off" spellcheck="false" />
+      </label>
+      <p class="cmd-out dim" id="cmd-out" aria-live="polite"></p>
+    </section>
+
+    {%- assign n = 0 -%}
+
+    {%- assign n = n | plus: 1 %}
+    <section id="focus">
+      <h2><span class="num">0{{ n }}</span> What I work on</h2>
+      <ol class="pipeline">
+        {%- for f in h.focus %}
+        <li class="card">
+          <span class="glyph">{{ f.glyph }}</span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.desc }}</p>
+          <p class="tags">{% for t in f.tags %}<span>{{ t }}</span>{% endfor %}</p>
+        </li>
+        {%- endfor %}
+      </ol>
+    </section>
+
+    {%- assign n = n | plus: 1 %}
+    <section id="path">
+      <h2><span class="num">0{{ n }}</span> Path</h2>
+      <p class="prompt"><span class="dim">$</span> git log --graph --oneline</p>
+      <ul class="gitlog">
+        {%- for p in h.path %}
+        <li>
+          <p class="commit"><span class="hash">{{ p.hash }}</span> <span class="ref">{{ p.ref }}</span></p>
+          <h3>{{ p.org }}</h3>
+          <p class="dim">{{ p.role }}</p>
+          {% if p.points.size > 0 %}<ul>{% for pt in p.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    {%- assign n = n | plus: 1 %}
+    <section id="work">
+      <h2><span class="num">0{{ n }}</span> Work &amp; writing</h2>
+      <p class="dim">Notes, projects and experiments.</p>
+      <div class="chips" role="group" aria-label="Filter">
+        <button class="chip on" data-kind="all">all</button>
+        <button class="chip" data-kind="ml">ml</button>
+        <button class="chip" data-kind="algorithms">algorithms</button>
+        <button class="chip" data-kind="notes">notes</button>
+      </div>
+      <ul class="worklist" id="worklist">
+        {%- for post in site.posts %}
+        <li class="item" data-kind="{{ post.kind | default: 'notes' }}" data-date="{{ post.date | date: '%Y-%m-%d' }}">
+          <p class="meta"><span class="kind">{{ post.kind | default: 'notes' }}</span> {{ post.date | date: '%b %Y' }}</p>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p>{{ post.description }}</p>
+          <p class="links"><a href="{{ post.url | relative_url }}">article</a></p>
+        </li>
+        {%- endfor %}
+        {%- for w in h.work %}
+        {%- assign d = w.date | append: '-01' | slice: 0, 10 %}
+        <li class="item" data-kind="{{ w.kind }}" data-date="{{ d }}">
+          <p class="meta"><span class="kind">{{ w.kind }}</span> {{ d | date: '%b %Y' }}</p>
+          <h3><a href="{{ w.links[0].url }}">{{ w.title }}</a></h3>
+          <p>{{ w.desc }}</p>
+          <p class="links">{% for l in w.links %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}</p>
+        </li>
+        {%- endfor %}
+      </ul>
+    </section>
+
+    {%- if h.beyond.size > 0 %}
+    {%- assign n = n | plus: 1 %}
+    <section id="beyond">
+      <h2><span class="num">0{{ n }}</span> Beyond code</h2>
+      <div class="grid">
+        {%- for b in h.beyond %}
+        <div class="card"><span class="glyph">{{ b.glyph }}</span><h3>{{ b.title }}</h3><p>{{ b.desc }}</p></div>
+        {%- endfor %}
+      </div>
+    </section>
+    {%- endif %}
+
+    {%- if h.awards.size > 0 %}
+    {%- assign n = n | plus: 1 %}
+    <section id="awards">
+      <h2><span class="num">0{{ n }}</span> Awards</h2>
+      <ul class="awards">
+        {%- for a in h.awards %}
+        <li><span class="star">★</span> {{ a.name }} <span class="dim">· {{ a.by }}</span>
+          {% if a.url %}<a href="{{ a.url }}">{{ a.year }}</a>{% else %}<span class="dim">{{ a.year }}</span>{% endif %}</li>
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endif %}
+
+    {%- assign n = n | plus: 1 %}
+    <section id="contact">
+      <h2><span class="num">0{{ n }}</span> Say hello</h2>
+      <ul class="contact">
+        {%- for c in h.contact %}
+        <li><a href="{{ c.url }}"><span class="dim">{{ c.label }}</span> {{ c.text }}</a></li>
+        {%- endfor %}
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap footer dim">
+    <p>Stay curious ✦</p>
+    <p><a href="{{ '/feed.xml' | relative_url }}">feed</a> · <a href="{{ '/sitemap.xml' | relative_url }}">sitemap</a> · <a href="{{ '/llms.txt' | relative_url }}">llms.txt</a></p>
+    <p><kbd>/</kbd> search · <kbd>d</kbd> light/dark · <kbd>t</kbd> theme · <kbd>b</kbd> background</p>
+  </footer>
+
+  <script src="{{ '/js/site.js' | relative_url }}"></script>
+</body>
+</html>

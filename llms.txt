@@ -1,0 +1,16 @@
+---
+layout: null
+---
+# {{ site.author }}
+
+> {{ site.description }}
+
+## Posts
+{% for post in site.posts %}- [{{ post.title }}]({{ post.url | absolute_url }}): {{ post.description }}
+{% endfor %}
+## Projects
+{% for w in site.data.home.work %}- [{{ w.title }}]({{ w.links[0].url }}): {{ w.desc }}
+{% endfor %}
+## Contact
+{% for c in site.data.home.contact %}- {{ c.label }}: {{ c.url }}
+{% endfor %}

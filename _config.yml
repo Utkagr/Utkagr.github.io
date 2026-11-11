@@ -1,0 +1,22 @@
+title: "Utkarsh Agrawal"
+description: "Utkarsh Agrawal — Data Scientist at Meesho. Maths & Computing, IIT Kharagpur. Notes on ML, data and algorithms."
+url: "https://utkagr.github.io"
+baseurl: ""
+author: "Utkarsh Agrawal"
+locale: en_US
+
+default_theme: "daylight"     # light: daylight | paper · dark: midnight | terminal
+default_background: "graph"  # graph | off
+
+markdown: kramdown
+highlighter: rouge
+permalink: /blog/:title.html
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+twitter:
+  username: agrawalutkarsh5
+
+exclude: [README.md]

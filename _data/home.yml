@@ -1,0 +1,93 @@
+# All homepage content lives here. Empty lists hide their section.
+
+handle: utkarsh
+tagline: "Data Scientist, Meesho · Maths & Computing, IIT Kharagpur"
+bio: >-
+  I build machine-learning systems for e-commerce at <a href="https://meesho.com">Meesho</a>.
+  I studied Mathematics &amp; Computing at IIT Kharagpur. This site collects my notes,
+  side projects and experiments.
+
+# 01 — what I work on
+focus:
+  - glyph: "Σ"
+    title: "Data"
+    desc: "Large-scale pipelines and feature engineering on Spark / Databricks."
+    tags: [Spark, SQL, Databricks]
+  - glyph: "f(x)"
+    title: "Modelling"
+    desc: "Ranking and prediction models, from baselines to deep nets."
+    tags: [PyTorch, XGBoost]
+  - glyph: "Δ"
+    title: "Experimentation"
+    desc: "Offline evaluation and online A/B testing."
+    tags: [A/B, metrics]
+  - glyph: "∞"
+    title: "Serving"
+    desc: "Shipping models to production and monitoring them."
+    tags: [MLflow, Triton]
+
+# 02 — path (newest first). hash is decorative.
+path:
+  - hash: "a1c9e07"
+    ref: "HEAD → present"
+    org: "Meesho"
+    role: "Data Scientist"
+    points: []
+  - hash: "0000001"
+    ref: "init"
+    org: "IIT Kharagpur"
+    role: "Mathematics & Computing"
+    points:
+      - "Coursework projects in regression, time series, NLP and operating systems."
+
+# 03 — work & writing. Posts in _posts/ are added automatically.
+work:
+  - title: "Similarity of Quora Question Pairs"
+    kind: ml
+    date: "2017-10"
+    desc: "Duplicate-question detection on the Quora Question Pairs Kaggle dataset."
+    links: [{label: code, url: "https://github.com/Utkagr/SimilarityIndexQP"}]
+  - title: "Flight Delays and Cancellations"
+    kind: ml
+    date: "2017-03"
+    desc: "Exploratory analysis and modelling of US flight delay data."
+    links: [{label: code, url: "https://github.com/Utkagr/flight_delays_and_cancellations-kaggle-"}]
+  - title: "AlgoCodes"
+    kind: algorithms
+    date: "2017-03"
+    desc: "Working C++ implementations of important algorithms."
+    links: [{label: code, url: "https://github.com/Utkagr/AlgoCodes"}]
+  - title: "NLP basics with NLTK"
+    kind: notes
+    date: "2017-02"
+    desc: "Tokenising, POS tagging, stemming, NER, chunking and text classification in one file."
+    links: [{label: code, url: "https://github.com/Utkagr/NLPrel"}]
+  - title: "Online Buzz Prediction on Twitter"
+    kind: ml
+    date: "2016-11"
+    desc: "Regression and time-series project at IIT Kharagpur on UCI buzz data."
+    links: [{label: code, url: "https://github.com/Utkagr/RTSMproject"}]
+  - title: "Terminal setup"
+    kind: notes
+    date: "2022-07"
+    desc: "My shell and terminal configuration."
+    links: [{label: code, url: "https://github.com/Utkagr/term-setup"}]
+
+# 04 — beyond code
+beyond: []
+#  - glyph: "♪"
+#    title: "Music"
+#    desc: "..."
+
+# 05 — awards
+awards: []
+#  - name: "..."
+#    by: "..."
+#    year: "2016"
+#    url: ""
+
+# 06 — contact
+contact:
+  - {label: email, text: "agrawalutkarsh5@gmail.com", url: "mailto:agrawalutkarsh5@gmail.com"}
+  - {label: github, text: "Utkagr", url: "https://github.com/Utkagr"}
+  - {label: x, text: "agrawalutkarsh5", url: "https://x.com/agrawalutkarsh5"}
